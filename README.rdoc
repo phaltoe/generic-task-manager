@@ -1,0 +1,20 @@
+== Generic Task Manager
+
+Generic Task Manager is a Rails 4.2 application that lets Super Admins create
+Projects and assign Teams of Users to those projects.
+
+Each Project can have many Tasks, and many Team Members assigned to those Tasks.
+
+Any Team Members assigned to a Project can Comment on the Project, and any Team
+Members assigned to a Task can Comment on that Task as well as on Comments made
+on that Task or Project (nested comments).
+
+Team Members can submit Tasks for review.
+
+Team Leaders can create Tasks, Assign Team Members to Tasks, mark submitted
+Tasks as completed, and mark Projects as complete.
+
+Super Admins create Projects, Teams, and assign Team Leader and Team Member roles
+to Users.
+
+At least, that's the idea... :)
