@@ -52,7 +52,16 @@ feature "User login and logout", :type => :feature do
     expect(page).to have_content('Sign out')
   end
 
-  scenario 'a user that has been deleted cannot login to their account'
+  scenario 'a user that has been deleted cannot login to their account' do
+    inactive_user = FactoryGirl.create(:user, :email => 'test@example.org', active: false)
+    visit root_path
+    click_link 'Login'
+    fill_in 'Email', :with => inactive_user.email
+    fill_in 'Password', :with => inactive_user.password
+    click_button 'Log in'
+    expect(page).to have_content('Invalid Email')
+  end
+
   scenario 'a user that has been banned cannot login to their account'
 
   scenario 'a logged in user logsout' do

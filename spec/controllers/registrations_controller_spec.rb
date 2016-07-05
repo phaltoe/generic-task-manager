@@ -60,4 +60,22 @@ describe RegistrationsController do
       expect(@user.website).to eq('http://my-new-site.org')
     end
   end
+
+  describe 'DELETE #destroy' do
+    before :each do
+      @user = FactoryGirl.create(:user)
+      sign_in @user
+    end
+
+    it 'sets user active status to false' do
+      delete :destroy, id: @user
+      @user.reload
+      expect(@user).to_not be_active
+    end
+
+    it 'does not destroy the record from database' do
+      delete :destroy, id: @user
+      expect { @user.reload }.not_to raise_exception
+    end
+  end
 end

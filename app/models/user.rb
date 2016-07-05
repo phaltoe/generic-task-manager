@@ -11,5 +11,10 @@ class User < ActiveRecord::Base
   delegate :username, :to => :profile
   delegate :website, :to => :profile
 
+  default_scope { where(:active => true) }
   accepts_nested_attributes_for :profile
+
+  def active?
+    active
+  end
 end

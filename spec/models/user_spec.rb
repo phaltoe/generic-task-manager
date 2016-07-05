@@ -27,4 +27,10 @@ describe User do
     profile = FactoryGirl.build(:profile, user: user, username: nil)
     expect(user).to_not be_valid
   end
+
+  it "does not return deleted accounts by default" do
+    user1 = FactoryGirl.create(:user)
+    user2 = FactoryGirl.create(:user, active: false)
+    expect(User.all.count).to eq(1)
+  end
 end
