@@ -26,6 +26,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'pg'
 gem 'devise'
+gem 'pundit'
 gem "twitter-bootstrap-rails"
 gem "bootstrap_form"
 
