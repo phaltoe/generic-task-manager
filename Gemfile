@@ -26,6 +26,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'pg'
 gem 'devise'
+gem "twitter-bootstrap-rails"
+gem "bootstrap_form"
 
 
 group :development, :test do
@@ -33,6 +35,7 @@ group :development, :test do
   gem 'byebug'
   gem 'factory_girl_rails', '~> 4.4.1'
   gem 'rspec-rails'
+  gem 'pry'
 end
 
 group :development do

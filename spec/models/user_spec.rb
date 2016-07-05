@@ -1,5 +1,30 @@
 require 'rails_helper'
 
-RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe User do
+  let (:user) { FactoryGirl.build(:user) }
+
+  it "is valid with an email, password and username" do
+    profile = FactoryGirl.build(:profile, user: user)
+    expect(user).to be_valid
+  end
+  
+  it "is invalid with an email that is not unique" do
+    saved_user = FactoryGirl.create(:user, :email => user.email)
+    expect(user).to_not be_valid
+  end
+
+  it "is invalid with a password that is too short" do
+    user.password = 'short'
+    expect(user).to_not be_valid
+  end
+  
+  it "is invalid with a password that is too long" do
+    user.password = "#{"x" * 129}"
+    expect(user).to_not be_valid
+  end
+
+  it "is invalid without a username" do
+    profile = FactoryGirl.build(:profile, user: user, username: nil)
+    expect(user).to_not be_valid
+  end
 end

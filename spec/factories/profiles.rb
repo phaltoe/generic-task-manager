@@ -2,6 +2,9 @@
 
 FactoryGirl.define do
   factory :profile do
-    references ""
+    association :user
+    username { Faker::Internet.user_name(6..15) }
+    website { Faker::Internet.url('example.org') }
+
   end
 end
