@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_one :profile, :dependent => :destroy
+  has_many :projects, :foreign_key => "user_id"
 
   validates_associated :profile, :on => :create
 
