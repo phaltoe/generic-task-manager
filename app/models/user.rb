@@ -12,9 +12,17 @@ class User < ActiveRecord::Base
   delegate :website, :to => :profile
 
   default_scope { where(:active => true) }
-  accepts_nested_attributes_for :profile
+  # accepts_nested_attributes_for :profile
 
   def active?
     active
+  end
+
+  def profile_attributes=(attrs)
+    if attrs.keys.include? 'id'
+      self.profile.update(attrs)
+    else
+      self.create_profile(attrs)
+    end
   end
 end
