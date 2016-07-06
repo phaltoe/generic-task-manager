@@ -44,7 +44,6 @@ feature 'Create new projects', :type => :feature do
   scenario 'create new project with valid attributes' do
     sign_in(user)
     visit new_project_path
-    save_and_open_page
     fill_in "Title", :with => "My new project"
     fill_in "Description", :with => "My new project description goes here"
     expect {
