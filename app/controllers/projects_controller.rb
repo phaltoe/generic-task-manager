@@ -2,7 +2,7 @@ class ProjectsController < ApplicationController
   before_action :set_project, :only => [:show, :edit, :update, :destroy]
 
   def index
-    @projects = current_user.projects
+    @projects = policy_scope(Project) 
   end
 
   def new
@@ -28,6 +28,7 @@ class ProjectsController < ApplicationController
 
   def set_project
     @project = current_user.projects.find_by(id: params[:id])
+    authorize @project
   end
 
   def project_params
