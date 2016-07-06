@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_project, :only => [:show, :edit, :update, :destroy]
 
   def index
@@ -7,6 +8,7 @@ class ProjectsController < ApplicationController
 
   def new
     @project = current_user.projects.build
+    authorize @project
   end
 
   def create

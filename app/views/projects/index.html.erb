@@ -5,5 +5,7 @@
     <% @projects.each do |project| %>
       <p><%= project.title %></p>
     <% end %>
+
+    <p><%= button_to 'Create new project', new_project_path, :method => :get, :class => 'btn btn-primary' %></p>
   </div>
 </div>
