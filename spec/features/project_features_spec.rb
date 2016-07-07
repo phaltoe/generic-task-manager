@@ -37,18 +37,42 @@ end
 feature 'Create new projects', :type => :feature do
   given!(:user) { FactoryGirl.create(:user) }
 
-  # Given I am a signed in user
-  # And I fill in the new project form with a title and description
-  # When I click create project
-  # A new project is created and I am the owner
+  # Given I am signed in and on the new project page
+  # When I add a new project
+  # I see the newly created projects page
+  # And the notice 'Your new project has been created!'
   scenario 'create new project with valid attributes' do
     sign_in(user)
     visit new_project_path
     fill_in "Title", :with => "My new project"
     fill_in "Description", :with => "My new project description goes here"
-    expect {
-      click_button "Create project"
-    }.to change(Project, :count).by(1)
-    expect(user.projects.size).to eq(1)
+    click_button "Create project"
+    expect(page).to have_content("My new project")
+    expect(page).to have_contnet("Your new project has been created!")
   end
+
+  # Given I am signed in and on the new project page
+  # When I add a new project
+  # And enter the emails of my friends
+  # I see the newly created projects page
+  # And a list of invited users
+  # And a list of invited emails that have not registered on the site yet
 end
+
+# Given I am the owner and on the show project page
+# When I click 'remove' by a users name
+# I see the projects page and the users name is gone
+
+# Given I am the owner and on the show project page
+# When I click role: 'leader' by a users name
+# I see the projects page and the users role is now leader
+
+# Given I am the owner and on the show project page
+# When I click 'Invite users to this project' link
+# I see the form to invite users by their emails
+
+# Given I am the owner and on the invite to project page
+# When I fill in the form with my friends emails who are not members
+# And I click 'Invite users'
+# I see the project show page
+# And I see my friends emails listed as 'Not yet registered'
