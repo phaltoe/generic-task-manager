@@ -48,7 +48,7 @@ feature 'Create new projects', :type => :feature do
     fill_in "Description", :with => "My new project description goes here"
     click_button "Create project"
     expect(page).to have_content("My new project")
-    expect(page).to have_contnet("Your new project has been created!")
+    expect(page).to have_content("Your new project has been created!")
   end
 
   # Given I am signed in and on the new project page

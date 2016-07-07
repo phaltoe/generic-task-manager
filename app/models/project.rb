@@ -12,5 +12,5 @@ class Project < ActiveRecord::Base
     :length => {
       :in => 20..400
     }
-  
+  validates :owner, :presence => true  
 end
