@@ -63,3 +63,16 @@ PROJECT HUB
 Description                     Members
 
 Tasks                           Discussion
+
+
+
+----
+
+What is left to be done?
+
+- Should the invite happen at create? Sure.
+- It should be a field, not necessarily required.
+- a list of emails separated by commas
+- invalid emails rejected
+- valid emails invited to app or invited to project if already members
+- Project should be created whether or not there are valid emails, and Team should be created, too, with owner as a Leader member

@@ -5,6 +5,5 @@ FactoryGirl.define do
     association :user
     username { Faker::Internet.user_name(6..15) }
     website { Faker::Internet.url('example.org') }
-
   end
 end

@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
 
   has_one :profile, :dependent => :destroy
   has_many :projects, :foreign_key => "user_id"
+  has_many :team_memberships, :class_name => 'TeamMember'
+  has_many :team_projects, :through => :team_memberships, :source => :project
 
   validates_associated :profile, :on => :create
 
@@ -13,7 +15,6 @@ class User < ActiveRecord::Base
   delegate :website, :to => :profile
 
   default_scope { where(:active => true) }
-  # accepts_nested_attributes_for :profile
 
   def active?
     active

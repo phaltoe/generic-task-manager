@@ -14,6 +14,7 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(project_params)
     if @project.save
+      # @project.team.send_invites
       redirect_to project_path(@project), notice: 'Your new project has been created!'
     else
       render :edit, alert: 'There was a problem saving your project.'
