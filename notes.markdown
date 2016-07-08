@@ -14,7 +14,7 @@ TODO list:
 -> Invite people -> List of emails?
   -# If email belongs to user, invite them (email? notice?)
   -# If email does not, send them an invitation to join via email?
-Or alternatively.. dont use email, handle everything within the app eco system... but 
+Or alternatively.. dont use email, handle everything within the app eco system... but
 i dont much like it.
 
 # Ok so here is how teams will be created...
@@ -54,7 +54,7 @@ THEN
 1. Build Teams model
 2. How does it integrate into the Project view?
  > Create a Project there is a big list of users you can invite
- > Edit a Team > List of users that are members, with links next to their name to make them 
+ > Edit a Team > List of users that are members, with links next to their name to make them
   a leader/member with a click... A separate list of users that are invited but not activated
   with a link to uninvite them (delete the row).
 
@@ -63,10 +63,3 @@ PROJECT HUB
 Description                     Members
 
 Tasks                           Discussion
-
-
-
-
-
-
-
