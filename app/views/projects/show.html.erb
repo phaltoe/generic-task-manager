@@ -1,3 +1,12 @@
 <%= content_tag :h1, @project.title %>
 <%= content_tag :p, @project.description %>
 
+<h3>Invited Users</h3>
+<% if @invited_users %>
+  <ul>
+    <%= render :partial => "invited_user", collection: @invited_users %>
+  </ul>
+<% else %>
+  <p>No pending invitations.</p>
+<% end %>
+

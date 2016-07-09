@@ -14,7 +14,9 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(project_params)
     if @project.save
-      # @project.team.send_invites
+      if @project.invalid_emails
+        flash[:alert] = "The following invalid emails were not invited: #{@project.invalid_emails.join(', ')}."
+      end
       redirect_to project_path(@project), notice: 'Your new project has been created!'
     else
       render :edit, alert: 'There was a problem saving your project.'
@@ -37,6 +39,7 @@ class ProjectsController < ApplicationController
 
   def show
     authorize @project
+    @invited_users = @project.team_members.pending
   end
 
   def destroy
@@ -53,6 +56,6 @@ class ProjectsController < ApplicationController
   end
 
   def project_params
-    params.require(:project).permit(:title, :description, :user_id)
+    params.require(:project).permit(:title, :description, :user_id, :emails_invited)
   end
 end

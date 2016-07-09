@@ -12,14 +12,25 @@ feature 'User creates a new project', :type => :feature do
     expect(page).to have_content("My new project")
   end
 
-  # invites friends by email to project
   scenario 'invites friends by email to project' do
+    create(:user, :email => 'daniela@example.com')
     sign_in(user)
     visit new_project_path
     fill_in "Title", :with => "My new project"
     fill_in "Description", :with => "My new project description!"
     fill_in "Enter the emails you want to invite", :with => "daniela@example.com, lucas@example.com"
     click_button "Create project"
-    expect(page).to have_content("daniela@example.com: Invitation sent")
-  end 
+    expect(page).to have_content("daniela@example.com")
+  end
+
+  scenario 'invites friends by email to project and is notified of invalid invited emails' do
+    create(:user, :email => 'daniela@example.com')
+    sign_in(user)
+    visit new_project_path
+    fill_in "Title", :with => "My new project"
+    fill_in "Description", :with => "My new project description!"
+    fill_in "Enter the emails you want to invite", :with => "brokenemail"
+    click_button "Create project"
+    expect(page).to have_content("The following invalid emails were not invited: brokenemail")
+  end
 end
