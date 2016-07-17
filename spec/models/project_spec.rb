@@ -37,13 +37,4 @@ RSpec.describe Project, type: :model do
       expect(project.team_members.first.role).to eq('leader')
     end
   end
-
-  context '#send_invites' do
-    let!(:invitee) { FactoryGirl.create(:user, :email => 'valid@example.org') }
-    let!(:project_with_invitees) { FactoryGirl.create(:project, :emails_invited => 'valid@example.org')}
-
-    it 'invites valid emails to project' do
-      expect(invitee.team_projects).to include(project_with_invitees)
-    end
-  end
 end

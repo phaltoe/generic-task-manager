@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   
   devise_for :users, controllers: { registrations: "registrations" }, :path => 'accounts'
 
-  resources :projects
+  resources :projects do
+    resources :team_members, :only => [:index]
+  end
 
   root to: 'static#index'
   # The priority is based upon order of creation: first created -> highest priority.

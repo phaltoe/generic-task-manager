@@ -1,0 +1,8 @@
+<h1><%= @project.title %></h1>
+<h3>Team Members</h3>
+
+<% if @team_members %>
+  <%= render @team_members %>
+<% else %>
+  <p>No team members assigned.</p>
+<% end %>

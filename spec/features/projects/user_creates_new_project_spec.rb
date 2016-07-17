@@ -20,6 +20,10 @@ feature 'User creates a new project', :type => :feature do
     fill_in "Description", :with => "My new project description!"
     fill_in "Enter the emails you want to invite", :with => "daniela@example.com, lucas@example.com"
     click_button "Create project"
+    click_link "View project team"
+    # TODO
+    # find a matcher to make sure that this email appears in the right area of the 
+    # layout (Invited users, not Active users, whatever that ends up looking like.)
     expect(page).to have_content("daniela@example.com")
   end
 
@@ -31,6 +35,7 @@ feature 'User creates a new project', :type => :feature do
     fill_in "Description", :with => "My new project description!"
     fill_in "Enter the emails you want to invite", :with => "brokenemail"
     click_button "Create project"
+    click_link "View project team"
     expect(page).to have_content("The following invalid emails were not invited: brokenemail")
   end
 end

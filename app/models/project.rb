@@ -23,17 +23,4 @@ class Project < ActiveRecord::Base
     team_member = self.team_members.build(user: self.owner, role: 'leader', accepted: true)
     team_member.save
   end
-
-  def send_invites
-    return if self.emails_invited.blank?
-
-    @valid_emails, @invalid_emails = self.emails_invited.split(', ').partition { |email| email[/@/]}
-    @valid_emails.each do |email|
-      if user = User.find_by(:email => email)
-        self.team_members.create(user: user, role: 'member', invited_email: email)
-      else
-        self.team_members.create(role: 'member', invited_email: email)
-      end
-    end
-  end
 end

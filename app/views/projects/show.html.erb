@@ -1,6 +1,9 @@
 <%= content_tag :h1, @project.title %>
 <%= content_tag :p, @project.description %>
 
+<%= link_to 'View Team Members', project_team_members_path %>
+
+
 <h3>Invited Users</h3>
 <% if @invited_users %>
   <ul>
