@@ -3,7 +3,7 @@
     <h1>My Projects</h1>
 
     <% @projects.each do |project| %>
-      <p><%= project.title %></p>
+      <p><%= link_to project.title, project_path(project) %></p>
     <% end %>
 
     <p><%= button_to 'Create new project', new_project_path, :method => :get, :class => 'btn btn-primary' %></p>

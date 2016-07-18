@@ -1,2 +1,11 @@
 <%= content_tag :h1, @project.title %>
 <%= content_tag :p, @project.description %>
+
+<h3>Team Members</h3>
+<table>
+  <thead>
+    <td>Email</td>
+    <td>Permissions</td>
+  </thead>
+  <%= render partial: 'team_members', collection: @project.team_members, as: 'team_member' %>
+</table>

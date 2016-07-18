@@ -5,5 +5,7 @@
 TODO
 
 # Prune the team_members table
+
 # Nest team_members as resource (not resources) under Project
-# Remove the project policy and delete any tests no longer relevant.
+
+# Remove/update the project policy and delete any tests no longer relevant.
