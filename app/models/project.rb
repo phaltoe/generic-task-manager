@@ -17,10 +17,10 @@ class Project < ActiveRecord::Base
     }
   validates :owner, :presence => true
 
-  after_create :add_owner_to_team_members, :send_invites
+  after_create :add_owner_to_team_members
 
   def add_owner_to_team_members
-    team_member = self.team_members.build(user: self.owner, role: 'edit', accepted: true)
+    team_member = self.team_members.build(user: self.owner, role: 'edit')
     team_member.save
   end
 end

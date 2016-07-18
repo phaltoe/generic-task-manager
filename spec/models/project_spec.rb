@@ -34,7 +34,7 @@ RSpec.describe Project, type: :model do
       user.save
       project.save
       project.reload
-      expect(project.team_members.first.role).to eq('leader')
+      expect(project.team_members.first.role).to eq('edit')
     end
   end
 end

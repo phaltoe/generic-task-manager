@@ -5,7 +5,5 @@ FactoryGirl.define do
     user nil
     project nil
     role 1
-    accepted false
-    invited_email "MyString"
   end
 end

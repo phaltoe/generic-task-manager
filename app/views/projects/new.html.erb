@@ -11,10 +11,6 @@
       <%= f.hidden_field :user_id %>
       <%= f.text_field :title %>
       <%= f.text_area :description %>
-      <div class="field_for">
-        <h3>Invite friends to join the project</h3>
-      </div>
-      <%= f.text_field :emails_invited, placeholder: "amy@example.com, bob@example.com", label: "Enter the emails you want to invite", help: "List the emails of your friends separated by commas (e.g. amy@example.com, bob@example.com)" %>
       <%= f.primary "Create project" %>
     <% end %>
   </div>
