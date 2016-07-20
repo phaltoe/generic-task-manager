@@ -35,8 +35,7 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    authorize @project
-    @team_members = @project.team_members.reject { |team_member| team_member.user == current_user }
+    @team_members = @project.team_members.reject { |team_member| team_member.user == @project.owner }
   end
 
   def destroy
@@ -46,19 +45,17 @@ class ProjectsController < ApplicationController
   end
 
   def add_team_members
-    authorize @project
-    @users = User.not_on_team(@project)
+    @users = User.not_on_team(@project).reject { |user| @project.owner == user }
   end
 
   def edit_permissions
-    authorize @project
     @team_members = @project.team_members.reject { |team_member| team_member.user == current_user }
   end
 
   private
 
   def set_project
-    @project = current_user.projects.find_by(id: params[:id])
+    @project = Project.find_by(id: params[:id])
     authorize @project
   end
 

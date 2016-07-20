@@ -39,4 +39,16 @@ class User < ActiveRecord::Base
       project.id]
     )
   end
+
+  def has_role?(record, role)
+    team_membership = TeamMember.where(user: self, project: record).first
+
+    if role == :edit
+      team_membership.role == 'edit' || record.owner == self
+    elsif role == :view
+      team_membership.role == 'view' || team_membership.role == 'edit' || record.owner == self
+    else
+      false
+    end
+  end
 end

@@ -1,6 +1,6 @@
 <%= content_tag :h1, @project.title %>
 <%= content_tag :p, @project.description %>
-<%= link_to 'Edit project details', edit_project_path(@project) %>
+<%= link_to 'Edit project details', edit_project_path(@project) if @project.owner == current_user %>
 
 <h3>Team Members</h3>
 <table>
@@ -16,5 +16,7 @@
   <% end %>
   <%= render partial: 'team_members', collection: @team_members, as: 'team_member' %>
 </table>
+<% if current_user.has_role? @project, :edit %>
 <%= link_to 'Edit Permissions', edit_project_permissions_path(@project) %> |
 <%= link_to 'Add Team Members', add_project_team_members_path(@project) %>
+<% end %>
