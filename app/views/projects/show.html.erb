@@ -2,10 +2,30 @@
 <%= content_tag :p, @project.description %>
 
 <h3>Team Members</h3>
-<table>
-  <thead>
-    <td>Email</td>
-    <td>Permissions</td>
-  </thead>
-  <%= render partial: 'team_members', collection: @project.team_members, as: 'team_member' %>
-</table>
+<%= bootstrap_form_for @project do |f| %>
+  <table>
+    <thead>
+      <td>Email</td>
+      <td>Permissions</td>
+    </thead>
+    <% if @project.owner == current_user %>
+      <tr>
+        <td>You</td>
+        <td>You are the owner of this project!</td>
+      </tr>
+    <% end %>
+    <% @team_members.each do |team_member| %>
+      <%= f.fields_for :team_members, team_member, index: team_member.id do |team_member_form| %>
+        <tr>
+          <td><%= team_member.user.email %></td>
+          <td>
+            <%= team_member_form.radio_button :role, 'None', label: 'None', inline: true %> 
+            <%= team_member_form.radio_button :role, 'View', label: 'View', inline: true, checked: (true if team_member.role == 'view') %> 
+            <%= team_member_form.radio_button :role, 'Edit', label: 'Edit', inline: true, checked: (true if team_member.role == 'edit') %></td>
+        </tr> 
+      <% end %>
+    <% end %>
+  </table>
+  <%= f.primary 'Update Permissions' %>
+  <%= link_to 'Add New Team Members', add_team_members_path(@project), class: 'btn btn-primary' %>
+<% end %>

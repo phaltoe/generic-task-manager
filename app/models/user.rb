@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_one :profile, :dependent => :destroy
+  has_one :profile, :dependent => :destroy, :inverse_of => :user
   has_many :projects, :foreign_key => "user_id"
   has_many :team_memberships, :class_name => 'TeamMember'
   has_many :team_projects, :through => :team_memberships, :source => :project

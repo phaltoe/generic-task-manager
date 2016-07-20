@@ -1,8 +1,8 @@
 class Profile < ActiveRecord::Base
-  belongs_to :user
+  belongs_to :user, :inverse_of => :profile
 
-  validates :username, 
-    :uniqueness => true, 
+  validates :username,
+    :uniqueness => true,
     :presence => true,
     :length => { maximum: 16, too_long: "can only be %{count} characters long" },
     :on => :create
