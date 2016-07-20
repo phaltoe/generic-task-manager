@@ -1,3 +1,4 @@
-<%= content_tag :h1, @project.title %>
-<%= content_tag :h3, "Add new team members" %>
-
+<tr>
+  <td><%= team_member.user.username %></td>
+  <td><%= team_member.role.capitalize %></td>
+</tr>

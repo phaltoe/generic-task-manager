@@ -12,18 +12,26 @@ class ProjectPolicy < ApplicationPolicy
   end
 
   def show?
-    user.present? && record.owner == user
+    record.owner == user
   end
 
   def edit?
-    user.present? && record.owner == user
+    record.owner == user
   end
 
   def update?
-    user.present? && record.owner == user
+    record.owner == user
   end
 
   def destroy?
-    user.present? && record.owner == user
+    record.owner == user
+  end
+
+  def edit_permissions?
+    record.owner == user
+  end
+
+  def add_team_members?
+    record.owner == user
   end
 end

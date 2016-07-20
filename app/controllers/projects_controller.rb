@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_project, :only => [:show, :edit, :update, :destroy, :add_team_members]
+  before_action :set_project, :only => [:show, :edit, :update, :destroy, :add_team_members, :edit_permissions]
 
   def index
     @projects = policy_scope(Project)
@@ -46,7 +46,13 @@ class ProjectsController < ApplicationController
   end
 
   def add_team_members
-    binding.pry
+    authorize @project
+    @users = User.not_on_team(@project)
+  end
+
+  def edit_permissions
+    authorize @project
+    @team_members = @project.team_members.reject { |team_member| team_member.user == current_user }
   end
 
   private
@@ -57,6 +63,6 @@ class ProjectsController < ApplicationController
   end
 
   def project_params
-    params.require(:project).permit(:title, :description, :user_id, team_members: [:id, :role]) 
+    params.require(:project).permit(:title, :description, :user_id, team_members: [:id, :role])
   end
 end

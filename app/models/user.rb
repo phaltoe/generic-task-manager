@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
 
   default_scope { where(:active => true) }
 
+
   def active?
     active
   end
@@ -26,5 +27,16 @@ class User < ActiveRecord::Base
     else
       self.create_profile(attrs)
     end
+  end
+
+  def self.not_on_team(project)
+    self.find_by_sql(
+      ["SELECT users.* FROM users
+      LEFT OUTER JOIN team_members
+      ON users.id = team_members.user_id
+      AND team_members.project_id = ?
+      WHERE team_members.user_id IS NULL",
+      project.id]
+    )
   end
 end

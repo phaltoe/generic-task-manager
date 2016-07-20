@@ -1,0 +1,23 @@
+<h1><%= @project.title %></h1>
+
+<h3>Add Team members</h3>
+<%= bootstrap_form_for @project do |f| %>
+  <table>
+    <thead>
+      <td>Email</td>
+      <td>Permissions</td>
+    </thead>
+    <% @users.each do |user| %>
+      <%= f.fields_for :team_members, index: user.id do |team_member_form| %>
+        <tr>
+          <td><%= user.email %></td>
+          <td>
+            <%= team_member_form.radio_button :role, 'None', label: 'None', inline: true, checked: true %>
+            <%= team_member_form.radio_button :role, 'View', label: 'View', inline: true %>
+            <%= team_member_form.radio_button :role, 'Edit', label: 'Edit', inline: true %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </table>
+  <%= f.primary 'Update Permissions' %>
+<% end %>

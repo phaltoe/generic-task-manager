@@ -2,9 +2,9 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { registrations: "registrations" }, :path => 'accounts'
 
-  resources :projects 
-  get 'projects/:project_id/add_team_members', to: 'project#add_team_members', as: 'add_team_members'
-  post 'projects/:project_id/add_team_members', to: 'project#create_team_members'
+  resources :projects
+  get 'projects/:id/edit_permissions', to: 'projects#edit_permissions', as: 'edit_project_permissions'
+  get 'projects/:id/add_team_members', to: 'projects#add_team_members', as: 'add_project_team_members'
 
   root to: 'static#index'
   # The priority is based upon order of creation: first created -> highest priority.
