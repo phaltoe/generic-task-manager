@@ -7,7 +7,7 @@
         <%= f.email_field :email, autofocus: true %>
 
         <%= f.fields_for :profile, resource.profile do |profile| %>
-          <%= profile.text_field :username, disabled: true %>
+          <%= profile.text_field :username, disabled: true, help: "(username cannot be changed)" %>
           <%= profile.text_field :website %>
         <% end %>
 
