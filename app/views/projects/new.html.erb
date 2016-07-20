@@ -5,13 +5,4 @@
   </div>
 </div>
 
-<div class="row">
-  <div class="col-md-12">
-    <%= bootstrap_form_for @project do |f| %>
-      <%= f.hidden_field :user_id %>
-      <%= f.text_field :title %>
-      <%= f.text_area :description %>
-      <%= f.primary "Create project" %>
-    <% end %>
-  </div>
-</div>
+<%= render partial: 'form', locals: { project: @project } %>

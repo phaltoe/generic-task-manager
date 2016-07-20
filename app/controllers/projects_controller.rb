@@ -39,7 +39,6 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
-    authorize @project
     @project.destroy
     redirect_to projects_path, notice: "#{@project.title} was destroyed successfully."
   end

@@ -1,2 +1,8 @@
-<h1>Projects#edit</h1>
-<p>Find me in app/views/projects/edit.html.erb</p>
+<div class="row">
+  <div class="col-md-12">
+    <h1>Edit <%= @project.title %></h1>
+    <p>On this page you can change a project's title or description.</p>
+  </div>
+</div>
+
+<%= render partial: 'form', locals: { project: @project } %>
