@@ -1,9 +1,6 @@
 class ProjectPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      # TODO
-      # Make policy include where owner OR where member of project group
-      # scope.where(:owner => user) or scope
       user.team_projects | user.projects
     end
   end
