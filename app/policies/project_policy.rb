@@ -6,30 +6,34 @@ class ProjectPolicy < ApplicationPolicy
   end
 
   def new?
-    user.present?
+    user
+  end
+
+  def create?
+    user
   end
 
   def show?
-    record.owner == user or user.has_role? record, :view
+    user.has_role? record, :view
   end
 
   def edit?
-    record.owner == user or user.has_role? record, :edit
+    user.has_role? record, :edit
   end
 
   def update?
-    record.owner == user or user.has_role? record, :edit
+    user.has_role? record, :edit
   end
 
   def destroy?
-    record.owner == user or user.has_role? record, :edit
+    user == record.owner
   end
 
   def edit_permissions?
-    record.owner == user or user.has_role? record, :edit
+    user.has_role? record, :edit
   end
 
   def add_team_members?
-    record.owner == user or user.has_role? record, :edit
+    user.has_role? record, :edit
   end
 end

@@ -13,6 +13,7 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new(project_params)
+    authorize @project
     if @project.save
       redirect_to project_path(@project), notice: 'Your new project has been created!'
     else
@@ -36,6 +37,7 @@ class ProjectsController < ApplicationController
 
   def show
     @team_members = @project.team_members.reject { |team_member| team_member.user == @project.owner }
+    @tasks = @project.tasks
   end
 
   def destroy

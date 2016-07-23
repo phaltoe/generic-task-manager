@@ -2,6 +2,18 @@
 <%= content_tag :p, @project.description %>
 <%= link_to 'Edit project details', edit_project_path(@project) if @project.owner == current_user %>
 
+<h3>Tasks</h3>
+<% if @tasks.empty? %>
+  No tasks.
+<% else %>
+  <ul>
+    <%= render @tasks %>
+  </ul>
+<% end %>
+<% if policy(@project.tasks.build).new? %>
+  <%= link_to "Add Tasks", new_project_task_path(@project) %>
+<% end %>
+
 <h3>Team Members</h3>
 <table>
   <thead>
@@ -19,4 +31,8 @@
 <% if current_user.has_role? @project, :edit %>
 <%= link_to 'Edit Permissions', edit_project_permissions_path(@project) %> |
 <%= link_to 'Add Team Members', add_project_team_members_path(@project) %>
+<% end %>
+
+<% if policy(@project).destroy? %>
+<%= button_to 'Delete this project', project_path(@project), method: "delete", data: { confirm: 'All data related to this project will be lost FOR. EV. ER. Are you sure?'}, class: 'btn btn-danger' %>
 <% end %>

@@ -3,6 +3,7 @@ class Project < ActiveRecord::Base
 
   belongs_to :owner, class_name: 'User', foreign_key: 'user_id'
   has_many :team_members, :dependent => :destroy
+  has_many :tasks, :dependent => :destroy
 
   validates :title,
     :presence => true,
@@ -17,8 +18,6 @@ class Project < ActiveRecord::Base
     }
   validates :owner, :presence => true
 
-  #after_create :add_owner_to_team_members
-
   def add_owner_to_team_members
     team_member = self.team_members.build(user: self.owner, role: 'edit')
     team_member.save
@@ -28,7 +27,7 @@ class Project < ActiveRecord::Base
     attrs.each do |user_id, role_attrs|
       if role_attrs.has_value? 'None'
         if team_member = self.team_members.find_by(user_id: user_id)
-          team_member.delete
+          team_member.destroy
         end
       else
         team_member = self.team_members.find_or_create_by(user_id: user_id)
