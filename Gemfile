@@ -29,6 +29,7 @@ gem 'devise'
 gem 'pundit'
 gem "twitter-bootstrap-rails"
 gem "bootstrap_form"
+gem "omniauth-github"
 
 
 group :development, :test do

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :tasks
-  devise_for :users, controllers: { registrations: "registrations", sessions: "sessions" }, :path => 'accounts'
+  devise_for :users, controllers: { registrations: "registrations", sessions: "sessions", omniauth_callbacks: "omniauth_callbacks"}, :path => 'accounts'
 
   resources :projects do
     resources :tasks

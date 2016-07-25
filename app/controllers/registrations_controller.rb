@@ -8,6 +8,15 @@ class RegistrationsController < Devise::RegistrationsController
     end
   end
 
+  def create
+    super do |resource|
+      temp_user = User.find_by(email: resource.email) 
+      if temp_user && temp_user.uid
+        resource.errors[:base] << "This email has already registered using Github. Either login with Github or click 'Forgot Password' to reset password and login with your email."
+      end
+    end
+  end
+
   def destroy
     resource.update(active: false)
     Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name)
