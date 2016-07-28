@@ -9,7 +9,9 @@
   <% end %>
 </li>
 <li>
-  <%= link_to project_path(project), method: :delete do %>
-    <span class="glyphicon glyphicon-remove"></span>
+  <% if policy(project).destroy?  %>
+    <%= link_to project_path(project), method: :delete do %>
+      <span class="glyphicon glyphicon-remove"></span>
+    <% end %>
   <% end %>
 </li>

@@ -25,7 +25,7 @@ class TaskPolicy < ApplicationPolicy
   end
 
   def destroy?
-    user == record.project.owner
+    user.has_role? record.project, :edit
   end
 
   def toggle_complete?
