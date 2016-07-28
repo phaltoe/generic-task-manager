@@ -36,4 +36,8 @@ class ProjectPolicy < ApplicationPolicy
   def add_team_members?
     user.has_role? record, :edit
   end
+
+  def view_team_members?
+    user.has_role? record, :view
+  end
 end

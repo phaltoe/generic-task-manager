@@ -1,8 +1,13 @@
 <div class="row">
   <div class="col-md-12">
-    <h1>Edit <%= @project.title %></h1>
-    <p>On this page you can change a project's title or description.</p>
+    <h1>Update Project</h1>
   </div>
 </div>
-
-<%= render partial: 'form', locals: { project: @project } %>
+<div class="row">
+  <div class="col-md-3">
+    <p class="notes">You can update your project information at any time.</p>
+  </div>
+  <div class="col-md-9">
+    <%= render partial: 'form', locals: { project: @project } %>
+  </div>
+</div>

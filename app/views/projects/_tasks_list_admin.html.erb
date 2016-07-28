@@ -1,0 +1,11 @@
+<li class="<%= 'completed' if task.completed %>">
+    <%= link_to project_toggle_task_complete_path(task.project, task), method: :post do %>
+      <span class="glyphicon glyphicon-<%= task.completed ? 'check' : 'unchecked' %>"></span>
+    <% end %>
+  <%= task.description %>
+  <div class="task-controls">
+    <%= link_to project_task_path(task.project, task), method: :delete do %>
+      <span class="glyphicon glyphicon-remove-circle"></span>
+    <% end %>
+  </div>
+</li>

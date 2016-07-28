@@ -1,0 +1,15 @@
+<li>
+  <%= link_to edit_project_path(project) do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+  <% end %>
+</li>
+<li>
+  <%= link_to view_project_team_members_path do %>
+    <span class="glyphicon glyphicon-user"></span>
+  <% end %>
+</li>
+<li>
+  <%= link_to project_path(project), method: :delete do %>
+    <span class="glyphicon glyphicon-remove"></span>
+  <% end %>
+</li>

@@ -3,11 +3,11 @@
 
 <h3>Edit Permissions</h3>
 <%= bootstrap_form_for @project do |f| %>
-  <table>
-    <thead>
-      <td>Email</td>
-      <td>Permissions</td>
-    </thead>
+    <table class="table table-hover">
+      <tr>
+        <th>Username</th>
+        <th>Permissions</th>
+      </tr>
     <% if @project.owner == current_user %>
       <tr>
         <td>You</td>

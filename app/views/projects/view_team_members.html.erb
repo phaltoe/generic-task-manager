@@ -1,0 +1,17 @@
+<%= content_tag :h1, @project.title %>
+
+<h3>Project Team Members</h3>
+<table class="table table-hover">
+  <tr>
+    <th>Username</th>
+    <th>Permissions</th>
+  </tr>
+  <%= render(@team_members) || "No Team members." %>
+</table>
+
+<% if current_user.has_role? @project, :edit %>
+  <h4>Admin options:</h4>
+  <%= link_to 'Edit Permissions', edit_project_permissions_path(@project) %> | <%= link_to 'Add Team Members', add_project_team_members_path(@project) %> | 
+<% end %>
+
+<%= link_to 'Back to project', project_path(@project) %>

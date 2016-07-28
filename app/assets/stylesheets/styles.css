@@ -1,3 +1,177 @@
-.completed {
+body {
+  background-color: #fff;
+  font-family: verdana, arial, helvetica, sans-serif;
+}
+.btn, .form-control {
+  border-radius: 0;
+}
+.btn-primary {
+  background-color: #4549de;
+}
+
+.navbar {
+  background-color: #4549de;
+  height: 75px;
+  margin-bottom: 60px;
+}
+.navbar-default .navbar-brand {
+  font-size: 30px;
+  color: #6699ff;
+  margin-right: 50px;
+}
+.navbar-default .navbar-brand span {
+  font-size: 30px;
+  line-height: 40px;
+  color: #6699ff;
+}
+.navbar-default .navbar-nav>li>a {
+  color: #6699ff;
+}
+.navbar-default .navbar-nav>li>a:hover {
+  color: #fff;
+}
+.navbar-nav li a span.nav-icon {
+  font-size: 30px;
+  line-height: 30px;
+  width: 30px;
+  display: block;
+  margin: 0 auto;
+}
+.navbar-nav li a span.sub-title {
+  font-size: 12px;
+  align: center;
+}
+.navbar-nav li a:hover {
+  color: #fff;
+}
+
+
+.projects-list {
+  list-style-type: none;
+  padding: 0;
+  margin-bottom: 50px;
+}
+.projects-list>li {
+  line-height: 30px;
+  font-size: 18px;
+  padding: 15px;
+  border-bottom: 1px solid #eee;
+}
+.projects-list>li>a:hover {
+  color: #000;
+  text-decoration: none;
+}
+.projects-list>li>a {
+  color: #6699ff;
+}
+.projects-list a span {
+  font-size: 30px;
+  display: block;
+  float: left;
+  padding-right: 25px;
+}
+
+.tasks-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0 0 50px 0;
+  border: 1px solid #ccc;
+}
+.tasks-list>li {
+  line-height: 30px;
+  font-size: 18px;
+  padding: 15px 15px 15px 15px;
+  border-bottom: 1px solid #eee;
+}
+.tasks-list>li.completed {
   text-decoration: line-through;
 }
+.tasks-list>li>a:hover {
+  color: #000;
+  text-decoration: none;
+}
+.tasks-list>li>a {
+  color: #6699ff;
+}
+.tasks-list a span {
+  font-size: 30px;
+  display: block;
+  float: left;
+  padding-right: 25px;
+}
+.tasks-list li .task-controls {
+  float: right;
+}
+.project-titles {
+  font-size: 40px;
+  margin-bottom: 25px;
+}
+
+
+.project-details {
+  list-style-type: none;
+  margin: 0;
+  text-align: left;
+}
+.project-details>li {
+  line-height: 50px;
+  font-size: 30px;
+  padding: 0;
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+  text-align: right;
+}
+.project-details>li>a {
+  display: block;
+  width: 100%;
+  padding-bottom: 10px;
+  color: #ccc;
+}
+.project-details>li>a:hover {
+  color: #4549de;
+}
+.project-details>li>ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 5px 0 5px 0;
+}
+.project-details>li>ul>li {
+  font-size: 12px;
+  line-height: 24px;
+  margin: 0;
+}
+.project-details>li>ul>li>a {
+  color: #999;
+}
+.border-right {
+  border-right: 1px solid #efefef;
+}
+
+
+h1 {
+  font-size: 50px;
+  text-align: right;
+  color: #4549de;
+}
+.notes {
+  color: #fff;
+  font-size: 18px;
+  background-color: #4549de;
+  padding: 15px;
+}
+
+/*table thead td {
+  background-color: #e3e3e3;
+  padding: 10px;
+  color: #000;
+  font-weight: 600;
+}
+table tr td {
+  padding: 10px;
+  font-size: 12px;
+}
+table tr:nth-child(even) {
+  background-color: #f8f8f8;
+}
+  */

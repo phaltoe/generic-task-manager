@@ -1,8 +1,13 @@
 <div class="row">
   <div class="col-md-12">
-    <h1>Create a Project</h1>
-    <p>On this page you can create a new project and invite current users to join the project's team.</p>
+    <h1>Start A Project</h1>
   </div>
 </div>
-
-<%= render partial: 'form', locals: { project: @project } %>
+<div class="row">
+  <div class="col-md-3">
+    <p class="notes">Make a new project and invite current users to join the project's team and collaborate.</p>
+  </div>
+  <div class="col-md-9">
+    <%= render partial: 'form', locals: { project: @project } %>
+  </div>
+</div>

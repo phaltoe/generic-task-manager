@@ -1,5 +1,5 @@
 greg = User.create! do |user|
-  user.email = 'me@gnfisher.com'
+  user.email = 'greg@gnfisher.com'
   user.password = 'test1234'
 end
 greg.create_profile!(username: 'gnfisher')

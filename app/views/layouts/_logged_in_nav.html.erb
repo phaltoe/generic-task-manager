@@ -1,0 +1,24 @@
+<ul class="nav navbar-nav">
+  <li>
+    <%= link_to projects_path do %>
+      <span class="nav-icon glyphicon glyphicon-th-list"></span><span class="sub-title">My Projects</span></a>
+    <% end %>
+  </li>
+  <li>
+    <%= link_to new_project_path do %>
+      <span class="nav-icon glyphicon glyphicon-plus-sign"></span><span class="sub-title">New Project</span></a>
+    <% end %>
+  </li>
+</ul>
+<ul class="nav navbar-nav navbar-right">
+  <li>
+    <%= link_to edit_user_registration_path do %>
+      <span class="nav-icon glyphicon glyphicon-user"></span><span class="sub-title">My Account</span></a>
+    <% end %>
+  </li>
+  <li>
+    <%= link_to destroy_user_session_path, method: :delete do %>
+      <span class="nav-icon glyphicon glyphicon-log-out"></span><span class="sub-title">Sign out</span></a>
+    <% end %>
+  </li>
+</ul>

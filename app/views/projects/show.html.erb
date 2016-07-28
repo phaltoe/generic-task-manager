@@ -1,38 +1,35 @@
-<%= content_tag :h1, @project.title %>
-<%= content_tag :p, @project.description %>
-<%= link_to 'Edit project details', edit_project_path(@project) if @project.owner == current_user %>
+<div class="row">
+  <div class="col-sm-offset-2 col-sm-10">
+    <h3 class="project-titles"><%= @project.title %></h3>
+  </div>
+</div>
 
-<h3>Tasks</h3>
-<% if @tasks.empty? %>
-  No tasks.
-<% else %>
-  <ul>
-    <%= render @tasks %>
-  </ul>
-<% end %>
-<% if policy(@project.tasks.build).new? %>
-  <%= link_to "Add Tasks", new_project_task_path(@project) %>
-<% end %>
-
-<h3>Team Members</h3>
-<table>
-  <thead>
-    <td>Email</td>
-    <td>Permissions</td>
-  </thead>
-  <% if @project.owner == current_user %>
-    <tr>
-      <td>You</td>
-      <td>You are the owner of this project!</td>
-    </tr>
-  <% end %>
-  <%= render partial: 'team_members', collection: @team_members, as: 'team_member' %>
-</table>
-<% if current_user.has_role? @project, :edit %>
-<%= link_to 'Edit Permissions', edit_project_permissions_path(@project) %> |
-<%= link_to 'Add Team Members', add_project_team_members_path(@project) %>
-<% end %>
-
-<% if policy(@project).destroy? %>
-<%= button_to 'Delete this project', project_path(@project), method: "delete", data: { confirm: 'All data related to this project will be lost FOR. EV. ER. Are you sure?'}, class: 'btn btn-danger' %>
-<% end %>
+<div class="row">
+  <div class="col-sm-2 border-right">
+    <ul class="project-details">
+      <% if current_user.has_role? @project, :edit %>
+        <%= render partial: 'project_details_admin', locals: { project: @project, team_members: @team_members } %>
+      <% else %>
+        <li>
+          <%= link_to view_project_team_members_path do %>
+            <span class="glyphicon glyphicon-user"></span>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="col-sm-10">
+    <ul class="tasks-list">
+      <% if current_user.has_role? @project, :edit %>
+        <%= render partial: 'tasks_list_admin', collection: @project.tasks, as: :task %>
+      <% else %>
+        <%= render partial: 'tasks_list', collection: @project.tasks, as: :task %>
+      <% end %>
+      <li>
+        <%= link_to new_project_task_path(@project) do %>
+          <span class="glyphicon glyphicon-plus-sign"></span> Add Task
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</div>

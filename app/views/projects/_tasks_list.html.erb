@@ -1,0 +1,4 @@
+<li class="<%= 'completed' if task.completed %>">
+  <span class="glyphicon glyphicon-<%= task.completed ? 'check' : 'unchecked' %>"></span>
+  <%= task.description %>
+</li>

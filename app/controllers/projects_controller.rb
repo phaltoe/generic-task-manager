@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_project, :only => [:show, :edit, :update, :destroy, :add_team_members, :edit_permissions]
+  before_action :set_project, :only => [:show, :edit, :update, :destroy, :add_team_members, :edit_permissions, :view_team_members]
 
   def index
     @projects = policy_scope(Project)
@@ -17,7 +17,7 @@ class ProjectsController < ApplicationController
     if @project.save
       redirect_to project_path(@project), notice: 'Your new project has been created!'
     else
-      render :edit, alert: 'There was a problem saving your project.'
+      render :new, alert: 'There was a problem saving your project.'
     end
   end
 
@@ -51,6 +51,10 @@ class ProjectsController < ApplicationController
 
   def edit_permissions
     @team_members = @project.team_members.reject { |team_member| team_member.user == current_user }
+  end
+
+  def view_team_members
+    @team_members = @project.team_members
   end
 
   private

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   end
   get 'projects/:id/edit_permissions', to: 'projects#edit_permissions', as: 'edit_project_permissions'
   get 'projects/:id/add_team_members', to: 'projects#add_team_members', as: 'add_project_team_members'
+  get 'projects/:id/view_team_members', to: 'projects#view_team_members', as: 'view_project_team_members'
 
   root to: 'static#index'
 end
