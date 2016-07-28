@@ -21,20 +21,4 @@ RSpec.describe Project, type: :model do
     no_description = FactoryGirl.build(:project, :description => nil)
     expect(no_description).to be_invalid
   end
-
-  context 'creating a new project' do
-    it 'adds owner to team_members for project' do
-      user.save
-      project.save
-      project.reload
-      expect(project.team_members.first.user).to eq(user)
-    end
-
-    it 'gives owner a leader role' do
-      user.save
-      project.save
-      project.reload
-      expect(project.team_members.first.role).to eq('edit')
-    end
-  end
 end

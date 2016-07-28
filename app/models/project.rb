@@ -18,10 +18,10 @@ class Project < ActiveRecord::Base
     }
   validates :owner, :presence => true
 
-  def add_owner_to_team_members
-    team_member = self.team_members.build(user: self.owner, role: 'edit')
-    team_member.save
-  end
+  # def add_owner_to_team_members
+  #   team_member = self.team_members.build(user: self.owner, role: 'edit')
+  #   team_member.save
+  # end
 
   def team_members=(attrs)
     attrs.each do |user_id, role_attrs|

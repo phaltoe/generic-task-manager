@@ -4,7 +4,7 @@ feature "User logs in and out", :type => :feature do
   scenario 'a registered user logs into their account with email' do
     user = create(:user, :email => 'test@example.org')
     visit root_path
-    click_link 'Login'
+    click_link 'Sign in'
     fill_in 'Email', :with => user.email
     fill_in 'Password', :with => user.password
     click_button 'Log in'
