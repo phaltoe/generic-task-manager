@@ -1,0 +1,27 @@
+<%= form_tag project_update_team_members_path(@project), method: :patch do %>
+    <table class="table table-hover">
+      <tr>
+        <th>Username</th>
+        <th>Permissions</th>
+      </tr>
+    <% if @project.owner == current_user %>
+      <tr>
+        <td>You</td>
+        <td>You are the owner of this project!</td>
+      </tr>
+    <% end %>
+    <% @team_members.each do |team_member| %>
+      <tr>
+        <td><%= team_member.user.username %></td>
+        <td>
+          <%= hidden_field_tag "users[#{ team_member.id }][project_id]", @project.id %>
+          <%= hidden_field_tag "users[#{ team_member.id }][user_id]", team_member.user.id %>
+          <%= radio_button_tag "users[#{ team_member.id }][role]", 'none' %> None
+          <%= radio_button_tag "users[#{ team_member.id }][role]", 'view', (true if team_member.role == 'view') %> View
+          <%= radio_button_tag "users[#{ team_member.id }][role]", 'edit', (true if team_member.role == 'edit') %> Edit
+        </td>
+      </tr>
+    <% end %>
+  </table>
+  <%= submit_tag 'Update Permissions', class: 'btn btn-primary' %>
+<% end %>

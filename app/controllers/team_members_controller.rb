@@ -1,5 +1,5 @@
 class TeamMembersController < ApplicationController
-  before_action :set_project, only: [:index, :new, :create]
+  before_action :set_project, only: [:index, :new, :create, :update_multiple]
 
   def index
     @team_members = @project.team_members.includes(:user)
@@ -23,6 +23,18 @@ class TeamMembersController < ApplicationController
         @project.owner == user
       end
       render :new
+    end
+  end
+
+  def update_multiple
+    authorize @project, :edit_permissions?
+    if TeamMember.update_multiple(team_members_params[:users])
+      redirect_to project_team_members_path(@project), notice: 'Permissions updated!'
+    else
+      binding.pry
+      flash[:alert] = "There was an issue updating user permissions. Try again."
+      @team_members = @project.team_members.includes(:user)
+      render :index
     end
   end
 

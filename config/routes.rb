@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   resources :projects do
     resources :team_members
+    patch 'team_members', to: 'team_members#update_multiple', as: 'update_team_members'
     resources :tasks
     post 'tasks/:id/toggle_complete', to: 'tasks#toggle_complete', as: 'toggle_task_complete'
   end
