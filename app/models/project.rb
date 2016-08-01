@@ -18,17 +18,4 @@ class Project < ActiveRecord::Base
     }
   validates :owner, :presence => true
 
-  def team_members=(attrs)
-    attrs.each do |user_id, role_attrs|
-      if role_attrs.has_value? 'None'
-        if team_member = self.team_members.find_by(user_id: user_id)
-          team_member.destroy
-        end
-      else
-        team_member = self.team_members.find_or_create_by(user_id: user_id)
-        team_member.role = role_attrs[:role].downcase
-        team_member.save
-      end
-    end
-  end
 end

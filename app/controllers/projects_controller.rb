@@ -47,18 +47,6 @@ class ProjectsController < ApplicationController
     redirect_to projects_path, notice: "#{@project.title} was destroyed successfully."
   end
 
-  def add_team_members
-    @users = User.not_on_team(@project).reject { |user| @project.owner == user }
-  end
-
-  def edit_permissions
-    @team_members = @project.team_members.reject { |team_member| team_member.user == current_user }
-  end
-
-  def view_team_members
-    @team_members = @project.team_members
-  end
-
   private
 
   def set_project
