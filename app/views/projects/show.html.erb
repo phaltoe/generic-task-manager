@@ -11,7 +11,7 @@
         <%= render partial: 'project_details_admin', locals: { project: @project, team_members: @team_members } %>
       <% else %>
         <li>
-          <%= link_to view_project_team_members_path do %>
+          <%= link_to project_team_members_path(@project) do %>
             <span class="glyphicon glyphicon-user"></span>
           <% end %>
         </li>
