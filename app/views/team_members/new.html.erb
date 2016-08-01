@@ -16,6 +16,7 @@
           <td><%= user.email %></td>
           <td>
             <%= hidden_field_tag "users[#{ user.id }][project_id]", @project.id %>
+            <%= hidden_field_tag "users[#{ user.id }][user_id]", user.id %>
             <%= radio_button_tag "users[#{ user.id }][role]", 'none', checked: true %> None
             <%= radio_button_tag "users[#{ user.id }][role]", 'view'  %> View
             <%= radio_button_tag "users[#{ user.id }][role]", 'edit' %> Edit
