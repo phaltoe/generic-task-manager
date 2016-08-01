@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_project, :only => [:show, :edit, :update, :destroy, :add_team_members, :edit_permissions, :view_team_members]
+  before_action :set_project, only: [:show, :edit, :update, :destroy, :add_team_members, :edit_permissions, :view_team_members]
 
   def index
     @projects = policy_scope(Project)
@@ -36,7 +36,9 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @team_members = @project.team_members.reject { |team_member| team_member.user == @project.owner }
+    @team_members = @project.team_members.reject  do |team_member|
+      team_member.user == @project.owner
+    end
     @tasks = @project.tasks
   end
 

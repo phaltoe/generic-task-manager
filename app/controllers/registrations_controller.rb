@@ -12,7 +12,9 @@ class RegistrationsController < Devise::RegistrationsController
     super do |resource|
       user = User.find_by(email: resource.email)
       if user && user.uid
-        resource.errors[:base] << "This email has already registered using Github. Either login with Github or click 'Forgot Password' to reset password and login with your email."
+        resource.errors[:base] << "This email has already registered using Github.
+                                  Either login with Github or click 'Forgot Password'
+                                  to reset password and login with your email."
       end
     end
   end

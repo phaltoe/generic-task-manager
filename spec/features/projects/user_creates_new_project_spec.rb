@@ -8,7 +8,7 @@ feature 'User creates a new project', :type => :feature do
     visit new_project_path
     fill_in "Title", :with => "My new project"
     fill_in "Description", :with => "My new project description goes here"
-    click_button "Create project"
+    click_button "Create"
     expect(page).to have_content("My new project")
   end
 end
