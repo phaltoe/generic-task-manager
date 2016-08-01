@@ -6,11 +6,9 @@ class TeamMember < ActiveRecord::Base
 
   def self.create_multiple(team_members_attrs)
     begin
-      binding.pry
       TeamMember.transaction do
         team_members_attrs.each do |k,attrs|
           unless attrs[:role] == 'none'
-            binding.pry
             team_member = self.create!(user_id: attrs[:user_id], project_id: attrs[:project_id])
             team_member.send("#{attrs[:role]}!")
           end
