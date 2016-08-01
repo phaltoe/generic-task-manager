@@ -24,10 +24,14 @@ class User < ActiveRecord::Base
   end
 
   def profile_attributes=(attrs)
-    if attrs.keys.include? 'id'
-      self.profile.update(attrs)
+    if self.valid?
+      if attrs.keys.include? 'id'
+        self.profile.update(attrs)
+      else
+        self.create_profile(attrs)
+      end
     else
-      self.create_profile(attrs)
+      self.build_profile(attrs)
     end
   end
 
