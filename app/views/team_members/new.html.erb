@@ -13,7 +13,7 @@
       </tr>
       <% @users.each do |user| %>
         <tr>
-          <td><%= user.email %></td>
+          <td><%= user.username %></td>
           <td>
             <%= hidden_field_tag "users[#{ user.id }][project_id]", @project.id %>
             <%= hidden_field_tag "users[#{ user.id }][user_id]", user.id %>
