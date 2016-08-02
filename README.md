@@ -1,6 +1,6 @@
 == Generic Task Manager
 
-This is a simple app for creating and collaborating on todo lists.
+This is a simple Rails 4 application for creating and collaborating on todo lists.
 
 == Installation
 
