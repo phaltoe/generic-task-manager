@@ -15,4 +15,4 @@ This is a simple app for creating and collaborating on todo lists.
 
 == License
 
-Generic Task Manager is released under the (MIT License)[http://www.opensource.org/licenses/MIT].
+Generic Task Manager is released under the [MIT License](http://www.opensource.org/licenses/MIT).
