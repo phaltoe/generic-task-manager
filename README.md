@@ -1,8 +1,8 @@
-== Generic Task Manager
+# Generic Task Manager
 
 This is a simple Rails 4 application for creating and collaborating on todo lists.
 
-== Installation
+## Installation
 
 1. Make sure you have postgreSQL installed.
 2. `git clone git@github.com:gnfisher/generic-task-manager.git`
@@ -13,6 +13,6 @@ This is a simple Rails 4 application for creating and collaborating on todo list
 7. `rails s`
 8. Visit `http://localhost:3000` in your browser and enjoy.
 
-== License
+## License
 
 Generic Task Manager is released under the [MIT License](http://www.opensource.org/licenses/MIT).
