@@ -1,20 +1,18 @@
 == Generic Task Manager
 
-Generic Task Manager is a Rails 4.2 application that lets Super Admins create
-Projects and assign Teams of Users to those projects.
+This is a simple app for creating and collaborating on todo lists.
 
-Each Project can have many Tasks, and many Team Members assigned to those Tasks.
+== Installation
 
-Any Team Members assigned to a Project can Comment on the Project, and any Team
-Members assigned to a Task can Comment on that Task as well as on Comments made
-on that Task or Project (nested comments).
+1. Make sure you have postgreSQL installed.
+2. `git clone git@github.com:gnfisher/generic-task-manager.git`
+3. `cd generic-task-manager`
+4. `rake db:create`
+5. `rake db:migrate`
+6. `rake db:seed` (optional)
+7. `rails s`
+8. Visit `http://localhost:3000` in your browser and enjoy.
 
-Team Members can submit Tasks for review.
+== License
 
-Team Leaders can create Tasks, Assign Team Members to Tasks, mark submitted
-Tasks as completed, and mark Projects as complete.
-
-Super Admins create Projects, Teams, and assign Team Leader and Team Member roles
-to Users.
-
-At least, that's the idea... :)
+Generic Task Manager is released under the (MIT License)[http://www.opensource.org/licenses/MIT].
